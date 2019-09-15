@@ -17,20 +17,21 @@ import {
   StatusBar,
 } from 'react-native';
 
-class Main extends Component {
+import Header from '../Components/Header.js';
+import Footer from '../Components/Footer.js';
+
+class Main extends React.Component {
+  shows_list = [];
+
   render() {
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          height: 100,
-          padding: 20,
-        }}>
-        <View style={{backgroundColor: 'blue', flex: 0.3}} />
-        <View style={{backgroundColor: 'red', flex: 0.5}} />
-        <Text>Hello World!</Text>
+      <View>
+        <Header />
+        <Text>this is the Main screen !!!!</Text>
+        <Footer />
       </View>
     );
   }
 }
+
 export default Main;
