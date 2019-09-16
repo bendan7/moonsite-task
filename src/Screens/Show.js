@@ -3,7 +3,6 @@ import {View, Text} from 'react-native';
 import Footer from '../Components/Footer.js';
 
 class Show extends React.Component {
-
   static navigationOptions = {
     title: 'Show',
   };

@@ -19,6 +19,7 @@ import {
 
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+import Swiper from 'react-native-swiper';
 
 import Footer from '../Components/Footer.js';
 import ShowCard from '../Components/ShowCard.js';
@@ -29,11 +30,27 @@ class Home extends React.Component {
     title: 'Home',
   };
 
+  componentDidMount() {
+    fetch('http://api.tvmaze.com/shows')
+      .then(response => response.json())
+      .then(responseJson => {
+        console.log('!!!!!!!!!!!!!!!!!!!!!' + responseJson.length);
+        //return responseJson.movies;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.body}>
-          <ShowCard />
+          <Swiper showsButtons={true} showsPagination={false}>
+            <ShowCard />
+            <ShowCard />
+            <ShowCard />
+          </Swiper>
         </View>
         <Footer />
       </View>
@@ -47,6 +64,7 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
+    paddingTop: 40,
     alignItems: 'center',
     justifyContent: 'center',
   },
