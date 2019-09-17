@@ -23,7 +23,7 @@ import Swiper from 'react-native-swiper';
 
 import Footer from '../Components/Footer.js';
 import ShowCard from '../Components/ShowCard.js';
-import Show from '../Screens/Show.js';
+import ShowScreen from '../Screens/ShowScreen.js';
 
 class Home extends React.Component {
   static navigationOptions = {
@@ -44,7 +44,11 @@ class Home extends React.Component {
               navigation={this.props.navigation}
               showName={e.name}
               img_url={e.image.medium}
-              stars_num={e.rating.average}
+              rate={e.rating.average}
+              summary={e.summary}
+              genres={e.genres}
+              schedule={e.schedule}
+              network={e.network.name}
             />
           );
         });
@@ -86,7 +90,7 @@ const AppNavigator = createStackNavigator({
     screen: Home,
   },
   ShowScreen: {
-    screen: Show,
+    screen: ShowScreen,
   },
 });
 

@@ -18,6 +18,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import RatingComp from '../Components/RatingComp.js';
 
 class ShowCard extends React.Component {
   constructor() {
@@ -37,6 +38,12 @@ class ShowCard extends React.Component {
               this.props.navigation.navigate('ShowScreen', {
                 show_id: this.props.showId,
                 show_name: this.props.showName,
+                show_rate: this.props.rate,
+                show_img_url: this.props.img_url,
+                show_summary: this.props.summary,
+                show_genres: this.props.genres,
+                show_schedule: this.props.schedule,
+                show_network: this.props.network,
               })
             }>
             <Image
@@ -50,18 +57,7 @@ class ShowCard extends React.Component {
         <View>
           <Text style={{fontSize: 20}}>{this.props.showName}</Text>
         </View>
-        <View style={{flexDirection: 'row'}}>
-          {[...Array(Math.round(this.props.stars_num))].map((e, i) => (
-            <Icon
-              name="ios-star"
-              size={30}
-              color="#4F8EF7"
-              key={i}
-              style={{padding: 5}}
-            />
-          ))}
-        </View>
-        <Text style={{fontSize: 20}}>{this.props.stars_num}/10</Text>
+        <RatingComp rate={this.props.rate} />
       </View>
     );
   }
