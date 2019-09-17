@@ -35,7 +35,8 @@ class Home extends React.Component {
     fetch('http://api.tvmaze.com/shows')
       .then(response => response.json())
       .then(responseJson => {
-        responseJson = responseJson.slice(0, 5);
+        //slice the big data array into only [0...20] shows
+        responseJson = responseJson.slice(0, 20);
         let newdata = responseJson.map((e, i) => {
           return (
             <ShowCard

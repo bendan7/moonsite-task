@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, ScrollView, WebView} from 'react-native';
+import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
+import {WebView} from 'react-native-webview';
 import Footer from '../Components/Footer.js';
 import RatingComp from '../Components/RatingComp.js';
 
@@ -30,27 +31,23 @@ class Show extends React.Component {
               </Text>
             </View>
             <RatingComp
-              rate={this.props.navigation.getParam(
-                'show_rate',
-                'not good at all',
-              )}
+              rate={this.props.navigation.getParam('show_rate', 'error rate')}
             />
-
-            <Text>
-              genres: {this.props.navigation.getParam('show_genres', 'genres erroe').map((e)=>e+' ')}
-            </Text>
-
-            <Text>
-              {this.props.navigation.getParam('show_schedule', 'schedu error').days} {' '}
-              {this.props.navigation.getParam('show_schedule', 'schedu error').time}
-            </Text>
-
-            <Text>
-              {this.props.navigation.getParam('show_summary', 'summary error')}
-            </Text>
-            <Text>
-              <WebView source={{html: '<p>Here I am</p>'}} />
-            </Text>
+            <View style={{padding: 20}}>
+              <Text style={{fontSize:20, paddingTop: 20}}>
+                Genres: {this.props.navigation.getParam('show_genres', 'genres erroe').map((e)=>e+' ')}
+              </Text>
+              <Text style={{fontSize:20, paddingTop: 20}}>
+                {this.props.navigation.getParam('show_schedule', 'schedu error').days} {' '}
+                {this.props.navigation.getParam('show_schedule', 'schedu error').time}
+              </Text>
+              <Text style={{fontSize:20, paddingTop: 20}}>
+                Network: {this.props.navigation.getParam('show_network', 'network error')}
+              </Text>
+              <Text style={{fontSize:18, paddingTop: 20}}>
+                {this.props.navigation.getParam('show_summary', 'summary error')}
+              </Text>
+            </View>
           </View>
         </ScrollView>
         <Footer />
