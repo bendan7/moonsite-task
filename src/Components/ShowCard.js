@@ -15,6 +15,7 @@ import {
   View,
   Text,
   StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -30,19 +31,27 @@ class ShowCard extends React.Component {
     return (
       <View style={{alignItems: 'center'}}>
         <View style={{paddingBottom: 20}}>
-          <Image
-            style={{width: 300, height: 300}}
-            source={{
-              uri: this.img_url,
-            }}
-            onClick={console.log('!')}
-          />
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() =>
+              this.props.navigation.navigate('ShowScreen', {
+                show_id: this.props.showId,
+                show_name: this.props.showName,
+              })
+            }>
+            <Image
+              style={{width: 300, height: 300}}
+              source={{
+                uri: this.props.img_url,
+              }}
+            />
+          </TouchableOpacity>
         </View>
         <View>
-          <Text style={{fontSize: 30}}>{this.title}</Text>
+          <Text style={{fontSize: 20}}>{this.props.showName}</Text>
         </View>
         <View style={{flexDirection: 'row'}}>
-          {[...Array(this.stars_num)].map((e, i) => (
+          {[...Array(Math.round(this.props.stars_num))].map((e, i) => (
             <Icon
               name="ios-star"
               size={30}
@@ -52,6 +61,7 @@ class ShowCard extends React.Component {
             />
           ))}
         </View>
+        <Text style={{fontSize: 20}}>{this.props.stars_num}/10</Text>
       </View>
     );
   }
