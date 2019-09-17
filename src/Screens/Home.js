@@ -35,8 +35,8 @@ class Home extends React.Component {
     fetch('http://api.tvmaze.com/shows')
       .then(response => response.json())
       .then(responseJson => {
-        //slice the big data array into only [0...20] shows
-        responseJson = responseJson.slice(0, 20);
+        //slice the big data array into only[0...20] shows
+        responseJson = responseJson.slice(0, 40);
         let newdata = responseJson.map((e, i) => {
           return (
             <ShowCard
@@ -49,7 +49,7 @@ class Home extends React.Component {
               summary={e.summary}
               genres={e.genres}
               schedule={e.schedule}
-              network={e.network.name}
+              network={e.network != null ? e.network.name : 'No network name'}
             />
           );
         });

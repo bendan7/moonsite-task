@@ -26,7 +26,7 @@ class Show extends React.Component {
               }}
             />
             <View>
-              <Text style={{fontSize: 20}}>
+              <Text style={{fontSize: 30}}>
                 {this.props.navigation.getParam('show_name', 'name error')}
               </Text>
             </View>
